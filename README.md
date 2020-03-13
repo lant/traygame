@@ -6,3 +6,5 @@ This is a very simple implementation of the [Tray game](https://en.wikipedia.org
 This implementation uses the *dict* file in order to collect random words and show them to the player for a given amount of time. 
 
 After that time, the list is shown again with the same list missing some words and in a different order. The player needs to write the missing words. 
+
+By default uses the `english` dictionary, but you can specify any file as source.
