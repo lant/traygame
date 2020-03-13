@@ -51,7 +51,7 @@ func main() {
 	timeup := flag.Int("time", 30, "Number of seconds available for memorizing the data")
 	missingWordsNumber := flag.Int("missing", 2, "Number of words that will disappear from the original list")
 	numberOfWords := flag.Int("words", 10, "total number of words")
-	dictFile := flag.String("dictionary", "/usr/share/dict/american-english",  "file containing the dictionary file (defaults to: /usr/share/dict/american-english")
+	dictFile := flag.String("dictionary", "/usr/share/dict/american-english", "file containing the dictionary file (defaults to: /usr/share/dict/american-english")
 	flag.Parse()
 
 	if *missingWordsNumber >= *numberOfWords {
