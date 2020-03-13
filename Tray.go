@@ -46,13 +46,12 @@ func filterPlurals(fileData []string) []string {
 	return data
 }
 
-const dictFile = "/usr/share/dict/american-english"
-
 func main() {
 
 	timeup := flag.Int("time", 30, "Number of seconds available for memorizing the data")
 	missingWordsNumber := flag.Int("missing", 2, "Number of words that will disappear from the original list")
 	numberOfWords := flag.Int("words", 10, "total number of words")
+	dictFile := flag.String("dictionary", "/usr/share/dict/american-english",  "file containing the dictionary file (defaults to: /usr/share/dict/american-english")
 	flag.Parse()
 
 	if *missingWordsNumber >= *numberOfWords {
@@ -62,7 +61,7 @@ func main() {
 
 	rand.Seed(time.Now().UnixNano())
 
-	info, err := os.Stat(dictFile)
+	info, err := os.Stat(*dictFile)
 	if os.IsNotExist(err) {
 		log.Fatal("Could not find the dict file in ", dictFile)
 		os.Exit(1)
@@ -73,7 +72,7 @@ func main() {
 	}
 
 	// read the file
-	content, err := ioutil.ReadFile(dictFile)
+	content, err := ioutil.ReadFile(*dictFile)
 	if err != nil {
 		log.Fatal("Could not read dict file in ", dictFile)
 		os.Exit(1)
